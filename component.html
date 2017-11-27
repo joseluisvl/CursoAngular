@@ -1,0 +1,20 @@
+<template id="TemplateBasicComponent">
+    <style>
+        h1 {color: red}
+    </style>
+    <h1>
+        H1 de Basic Component
+    </h1>
+</template>
+<script>
+    class BasicComponent extends HTMLElement{
+        constructor(){
+            super();
+            console.log("Basic component creado");
+            var oImport = document.querySelector('link[rel="import"]').import;
+            var elem = oImport.querySelector('#TemplateBasicComponent');
+            this.attachShadow({mode:'open'}).innerHTML = elem.innerHTML;
+        }
+    }
+    customElements.define("basic-component", BasicComponent);
+</script>
